@@ -1,4 +1,21 @@
-# generator-xyz
+# GeneratorXYZ
+
+This is the frontend application of [GeneratorXYZ](https://generatorxyz.com) which is a platform for generating content with AI. Like social media messages, summaries and SEO improvers.
+
+> **Why make it opensource?** 
+I decided to make the frontend application opensource so more people can use it to build their own platform. You can clone this repo and use it how you like. Using the GeneratorXYZ logo is not allowed, so give yours a different name. Mentioning you use this software will be appriciated, but is not required 🫶.
+
+
+## What do you need to run this app?
+
+- Supabase account
+- NodeJS backend (or build your own if you like)
+
+
+## Where does it run?
+
+You can use Vercel or Netlify to run it. But I prefer Vercel.
+
 
 ## Build Setup
 
@@ -12,57 +29,111 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
-
-# generate static project
-$ yarn generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Special Directories
+## Before you start
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+1. Create an account on Supabase
+2. Open the `sample.env` file and save it as `.env`
+3. Fill your `SUPABASE_URL` and `SUPABASE_KEY`. If you already created your project, you can check **Settings > API**.
+4. Now you need to clone the NodeJS backend repo.
 
-### `assets`
+## Database architecture
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+For setting up the database architecture you can easily use the SQL in the "startup-scripts" folder.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+![](./docs/supbase-schema.png)
 
-### `components`
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| countries  | id                  | bigint                      |
+| countries  | name                | text                        |
+| countries  | iso2                | text                        |
+| countries  | iso3                | text                        |
+| countries  | local_name          | text                        |
+| countries  | continent           | USER-DEFINED                |
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| credits    | id                  | uuid                        |
+| credits    | created_at          | timestamp with time zone    |
+| credits    | amount              | numeric                     |
+| credits    | user_id             | uuid                        |
+| credits    | updated_at          | timestamp without time zone |
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| customers  | id                  | bigint                      |
+| customers  | created_at          | timestamp with time zone    |
+| customers  | user_id             | uuid                        |
+| customers  | active_subscription | boolean                     |
+| customers  | start_date          | date                        |
 
-### `layouts`
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| messages   | id                  | bigint                      |
+| messages   | created_at          | timestamp with time zone    |
+| messages   | user_id             | uuid                        |
+| messages   | cost                | numeric                     |
+| messages   | message             | text                        |
+| messages   | api_key             | text                        |
+| messages   | uuid                | uuid                        |
+| messages   | url                 | text                        |
+| messages   | source_content      | text                        |
+| messages   | type                | text                        |
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| orders     | id                  | bigint                      |
+| orders     | created_at          | timestamp with time zone    |
+| orders     | user_id             | uuid                        |
+| orders     | product_id          | text                        |
+| orders     | price_id            | text                        |
+| orders     | amount              | numeric                     |
+| orders     | customer_id         | text                        |
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| products   | id                  | bigint                      |
+| products   | created_at          | timestamp with time zone    |
+| products   | stripe_product_id   | text                        |
+| products   | name                | text                        |
+| products   | credits             | numeric                     |
 
-### `pages`
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| profiles   | id                  | uuid                        |
+| profiles   | updated_at          | timestamp with time zone    |
+| profiles   | username            | character varying           |
+| profiles   | full_name           | text                        |
+| profiles   | avatar_url          | text                        |
+| profiles   | website             | text                        |
+| profiles   | country             | bigint                      |
+| profiles   | api_key             | uuid                        |
+| profiles   | credit              | uuid                        |
+| profiles   | beta_user           | boolean                     |
+| profiles   | onboarding_done     | boolean                     |
+| profiles   | customer_id         | text                        |
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| summaries  | id                  | bigint                      |
+| summaries  | created_at          | timestamp with time zone    |
+| summaries  | user_id             | uuid                        |
+| summaries  | url                 | text                        |
+| summaries  | summary             | text                        |
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+| table_name | column_name         | data_type                   |
+| ---------- | ------------------- | --------------------------- |
+| user       | id                  | uuid                        |
+| user       | email               | character varying           |
+| user       | customer_id         | character varying           |
+| user       | created_at          | timestamp without time zone |
+| user       | session_id          | text                        |
+| user       | sub_start_date      | timestamp without time zone |
+| user       | sub_end_date        | timestamp without time zone |
+| user       | sub_id              | text                        |
+| user       | sub_status          | text                        |
