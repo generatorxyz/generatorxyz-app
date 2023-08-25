@@ -1,37 +1,18 @@
 # GeneratorXYZ
 
-This is the frontend application of [GeneratorXYZ](https://generatorxyz.com) which is a platform for generating content with AI. Like social media messages, summaries and SEO improvers.
+![](https://res.cloudinary.com/raymons/video/upload/q_70,f_webp,w_800/v1676561033/generator-xyz/onboarding/generator-xyz-screen-recording-no-audio.mov)
 
-> **Why make it opensource?** 
-I decided to make the frontend application opensource so more people can use it to build their own platform. You can clone this repo and use it how you like. Using the GeneratorXYZ logo is not allowed, so give yours a different name. Mentioning you use this software will be appriciated, but is not required 🫶.
+This is the backend application of [GeneratorXYZ](https://generatorxyz.com) which is a platform for generating content with AI. Like social media messages, summaries and SEO improvers.
+
+> **Why make it opensource?**
+> I decided to make the frontend application opensource so more people can use it to build their own platform. You can clone this repo and use it how you like. Using the GeneratorXYZ logo is not allowed, so give yours a different name. Mentioning you use this software will be appriciated, but is not required 🫶.
 
 
 ## What do you need to run this app?
 
 - Supabase account
-- NodeJS backend (or build your own if you like)
+- [Generator XYZ NodeJS backend](https://github.com/generatorxyz/generator-xyz-backend) (or build your own if you like)
 
-
-## Where does it run?
-
-You can use Vercel or Netlify to run it. But I prefer Vercel.
-
-
-## Build Setup
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-```
-
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Before you start
 
@@ -137,3 +118,25 @@ For setting up the database architecture you can easily use the SQL in the "star
 | user       | sub_end_date        | timestamp without time zone |
 | user       | sub_id              | text                        |
 | user       | sub_status          | text                        |
+
+
+## Where does it run?
+
+You can use Vercel or Netlify to run it. But I prefer Vercel.
+
+
+## Build Setup
+
+```bash
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+```
+
+For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).

@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": "https://github.com/generatorxyz/generatorxyz-app",
+  "author": "Dev By RayRay",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
