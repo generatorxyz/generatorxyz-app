@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--code-bg: #1e1e1e;
+		--white: #fff;
+		--primary-color: #4f00ec;
+		--primary-color-hover: #3f00be;
+		--secondary-color: #001576;
+
+		--color-teal: #29d5b3;
+		--color-darkblue: #172765;
+		--color-purple: #783dde;
+		--color-softpink: #d6afe4;
+
+	}
+	body {
+		font-family: 'Poppins', sans-serif;
+		font-weight: 400;
+		font-size: 1.2rem;
+		@apply leading-loose bg-white dark:bg-gray-900;
+	}
+	.home-layout {
+		/* @apply bg-white; */
+	}
+	h1 {
+		@apply lg:text-5xl text-3xl;
+	}
+	h2 {
+		@apply lg:text-3xl text-2xl;
+	}
+	h3 {
+		@apply lg:text-2xl text-xl;
+	}
+	h4 {
+		@apply lg:text-xl text-xl;
+	}
+
+	p,
+	li,
+	blockquote,
+	p > code {
+		@apply text-lg leading-loose;
+	}
+	.text-primary-color {
+		color: var(--primary-color);
+	}
+	.bg-primary-color {
+		background: var(--primary-color);
+	}
+	.bg-primary-hover-color {
+		background: var(--primary-color-hover);
+	}
+	.text-secondary-color {
+		color: var(--secondary-color);
+	}
+	.bg-secondary-color {
+		background: var(--secondary-color);
+	}
+	.bg-secondary-hover-color {
+		background: var(--secondary-color-hover);
+	}
+
+	button:not(.unset), .button {
+		@apply w-full mt-4 text-white text-base bg-primary-color hover:bg-primary-hover-color transition focus:outline-none rounded-lg px-3 py-2 no-underline max-h-[48px];
+	}
+
+	h1,
+	h2 {
+		@apply mt-8;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	li {
+		@apply dark:text-white
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-bold ;
+	}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply mt-8;
+	}
+	h1 a,
+	h2 a,
+	h3 a,
+	h4 a,
+	h5 a,
+	h6 a,
+	a h1,
+	a h2,
+	a h3,
+	a h4,
+	a h5,
+	a h6 {
+		@apply no-underline;
+	}
+	blockquote,
+	dl,
+	dd,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	figure,
+	p,
+	pre,
+	ul,
+	ol,
+	.content img {
+		@apply mb-3;
+	}
+	.content img {
+		margin: 0 auto 2rem;
+	}
+	a {
+		@apply underline;
+		transition: ease-in-out all 0.3s;
+	}
+	a:hover {
+		@apply no-underline;
+	}
+
+	input[type='url'],
+	input[type='text']:not(.unset),
+	input[type='email'],
+	input[type='password'],
+	select,
+	textarea {
+		@apply block w-full px-4 py-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-gray-500 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500 outline-none disabled:bg-gray-200 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none text-base;
+		min-height: 48px;
+	}
+	select {
+		@apply pr-8;
+		min-height: 48px
+	}
+	form label {
+		@apply font-bold cursor-pointer;
+	}
+	input[type='url'].url-input {
+		@apply pl-10;
+	}
+
+	.content ul,
+	.content ol {
+		@apply my-8 ml-8;
+		list-style: inherit;
+		list-style-position: outside;
+	}
+	.content ol {
+		@apply list-decimal;
+	}
+	.content li {
+		@apply pl-4 mb-2;
+	}
+
+	.content p code {
+		white-space: nowrap;
+		font-family: monospace;
+		@apply px-2 py-1 text-base;
+	}
+
+	pre code {
+		@apply text-white;
+	}
+
+	.content blockquote {
+		@apply my-8 dark:bg-gray-800 bg-yellow-500;
+		position: relative;
+		color: #fff;
+		border-left: 10px solid var(--primary-color);
+		padding: 1rem 2rem 1.5rem;
+		quotes: '\201C''\201D''\2018''\2019';
+	}
+	.content blockquote:before {
+		position: absolute;
+		top: 22px;
+		left: 10px;
+		color: var(--primary-color);
+		content: open-quote;
+		font-size: 7rem;
+		line-height: 0.1em;
+		margin-right: 0.25em;
+		vertical-align: -0.4em;
+	}
+	.content blockquote p {
+		@apply mt-8 text-2xl leading-loose;
+		font-style: italic;
+		color: #fff;
+	}
+	.code-container .copied-text {
+		@apply text-white;
+	}
+	.add-wrapper {
+		min-height: 1px;
+		margin: 0 auto;
+		display: flex;
+		max-width: 800px;
+	}
+	.add-wrapper.center {
+		justify-content: center;
+	}
+	.add-wrapper.center .loaded .ea-placement .ea-callout {
+		text-align: center;
+	}
+}
+
+.page-max-lg {
+	max-width: 1600px;
+	margin: 0 auto;
+}
+.page-max-md {
+	max-width: 800px;
+	margin: 0 auto;
+}
+.hide-mobile {
+	display: none;
+}
+@media screen and (min-width: 1300px) {
+	.show-mobile {
+		display: none;
+	}
+	.hide-mobile {
+		display: block;
+	}
+}
